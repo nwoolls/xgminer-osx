@@ -4,6 +4,7 @@ CACHE_FILENAME=$(basename $MINER_URL)
 CACHE_ROOT=./cache
 CACHE_FILEPATH=$CACHE_ROOT/$CACHE_FILENAME
 
+# keep this at the top in case we cd around
 BUILD_DIR=$(pwd)
 
 if [ ! -f $CACHE_FILEPATH ]
