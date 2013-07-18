@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./EDITME_bfgversion.sh
+. ./EDITME_bfgminer_version.sh
 
 rm -rf ./output
 

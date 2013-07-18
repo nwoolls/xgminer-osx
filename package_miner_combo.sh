@@ -1,9 +1,9 @@
 #!/bin/bash
 
-. ./EDITME_cgversion.sh
+. ./EDITME_cgminer_version.sh
 CGMINER_VERSION=$MINER_VERSION
 
-. ./EDITME_bfgversion.sh
+. ./EDITME_bfgminer_version.sh
 BFGMINER_VERSION=$MINER_VERSION
 
 rm -rf output

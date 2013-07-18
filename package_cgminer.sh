@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./EDITME_cgversion.sh
+. ./EDITME_cgminer_version.sh
 
 rm -rf ./output
 
