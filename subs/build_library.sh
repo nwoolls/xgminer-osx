@@ -13,14 +13,14 @@ then
     wget -O $CACHE_FILEPATH $LIB_URL
 fi
 
-rm -rf $LIB_DIR
-mkdir $LIB_DIR
+rm -rf working
+mkdir working
 
-tar -xzvf $CACHE_FILEPATH -C $LIB_DIR --strip-components=1
+tar -xzvf $CACHE_FILEPATH -C working --strip-components=1
 
 mkdir $OUTPUT_DIR
 
-cd $LIB_DIR
+cd working
 
 ./configure --prefix=$BUILD_DIR/$OUTPUT_DIR
 make
@@ -28,4 +28,4 @@ make install
 
 cd $BUILD_DIR
 
-rm -rf $LIB_DIR
+rm -rf working
