@@ -1,6 +1,7 @@
 #!/bin/bash
 
-. ./EDITME_libjansson_version.sh
+. ./EDITME_versions.sh
+LIB_VERSION=$LIBJANSSON_VERSION
 
 LIB_URL=http://www.digip.org/jansson/releases/jansson-$LIB_VERSION.tar.gz
 LIB_DIR=libjansson

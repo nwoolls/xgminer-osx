@@ -1,6 +1,7 @@
 #!/bin/bash
 
-. ./EDITME_bfgminer_version.sh
+. ./EDITME_versions.sh
+MINER_VERSION=$BFGMINER_VERSION
 
 rm -rf ./output
 

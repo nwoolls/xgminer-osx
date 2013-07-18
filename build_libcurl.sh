@@ -1,6 +1,7 @@
 #!/bin/bash
 
-. ./EDITME_libcurl_version.sh
+. ./EDITME_versions.sh
+LIB_VERSION=$LIBCURL_VERSION
 
 LIB_URL=http://curl.askapache.com/download/curl-$LIB_VERSION.tar.gz
 LIB_DIR=libcurl

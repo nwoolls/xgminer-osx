@@ -1,10 +1,7 @@
 #!/bin/bash
 
-. ./EDITME_cgminer_version.sh
-CGMINER_VERSION=$MINER_VERSION
-
-. ./EDITME_bfgminer_version.sh
-BFGMINER_VERSION=$MINER_VERSION
+. ./EDITME_versions.sh
+MINER_VERSION=$CGMINER_VERSION
 
 rm -rf output
 
