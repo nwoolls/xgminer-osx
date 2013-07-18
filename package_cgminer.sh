@@ -8,7 +8,7 @@ rm -rf ./output
 . ./build_cgminer.sh
 
 tar -cvzf cgminer-$MINER_VERSION-osx64.tar.gz -C output .
-mkdir ./packages
-mv cgminer-$MINER_VERSION-osx64.tar.gz packages/
+mkdir ./redist
+mv cgminer-$MINER_VERSION-osx64.tar.gz redist/
 
 rm -rf ./output

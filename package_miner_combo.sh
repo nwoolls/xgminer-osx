@@ -17,7 +17,7 @@ MINER_VERSION=$BFGMINER_VERSION
 . ./build_bfgminer.sh
 
 tar -cvzf cgminer-$CGMINER_VERSION-osx64_and_bfgminer-$BFGMINER_VERSION-osx64.tar.gz -C output .
-mkdir ./packages
-mv cgminer-$CGMINER_VERSION-osx64_and_bfgminer-$BFGMINER_VERSION-osx64.tar.gz packages/
+mkdir ./redist
+mv cgminer-$CGMINER_VERSION-osx64_and_bfgminer-$BFGMINER_VERSION-osx64.tar.gz redist/
 
 rm -rf ./output
