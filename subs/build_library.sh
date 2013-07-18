@@ -1,15 +1,22 @@
 #!/bin/bash
 
+CACHE_FILENAME=$(basename $LIB_URL)
+CACHE_ROOT=./cache
+CACHE_FILEPATH=$CACHE_ROOT/$CACHE_FILENAME
+
 BUILD_DIR=$(pwd)
 OUTPUT_DIR=./output
 
-rm $LIB_FILE
+if [ ! -f $CACHE_FILEPATH ]
+then
+    mkdir $CACHE_ROOT
+    wget -O $CACHE_FILEPATH $LIB_URL
+fi
+
 rm -rf $LIB_DIR
-
-wget -O $LIB_FILE $LIB_URL
-
 mkdir $LIB_DIR
-tar -xzvf $LIB_FILE -C $LIB_DIR --strip-components=1
+
+tar -xzvf $CACHE_FILEPATH -C $LIB_DIR --strip-components=1
 
 mkdir $OUTPUT_DIR
 
@@ -21,5 +28,4 @@ make install
 
 cd $BUILD_DIR
 
-rm $LIB_FILE
 rm -rf $LIB_DIR
