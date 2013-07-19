@@ -31,3 +31,5 @@ cd $BUILD_DIR
 rm -rf working
 
 install_name_tool -change $BUILD_DIR/output/lib/libcurl.4.dylib @executable_path/../lib/libcurl.4.dylib -change $BUILD_DIR/output/lib/libjansson.4.dylib @executable_path/../lib/libjansson.4.dylib -change $BUILD_DIR/output/lib/libusb-1.0.0.dylib @executable_path/../lib/libusb-1.0.0.dylib -change $BUILD_DIR/output/lib/libblkmaker_jansson-0.1.0.dylib @executable_path/../lib/libblkmaker_jansson-0.1.0.dylib -change $BUILD_DIR/output/lib/libblkmaker-0.1.0.dylib @executable_path/../lib/libblkmaker-0.1.0.dylib output/bin/$MINER_EXE
+
+install_name_tool -change $BUILD_DIR/output/lib/libblkmaker-0.1.0.dylib @executable_path/../lib/libblkmaker-0.1.0.dylib -change $BUILD_DIR/output/lib/libjansson.4.dylib @executable_path/../lib/libjansson.4.dylib output/lib/libblkmaker_jansson-0.1.0.dylib
