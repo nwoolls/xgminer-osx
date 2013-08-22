@@ -3,6 +3,8 @@ xgminer-osx
 
 This project consists of a standard set of shell scripts for creating redistributable packages of [cgminer][6] and [bfgminer][7] for Mac OS X.
 
+![bfgminer](http://nwoolls.files.wordpress.com/2013/07/screen-shot-2013-07-01-at-5-47-22-pm.png "bfgminer")
+
 The [Releases tab][8] is used to provide binary downloads for these redistributable packages. All source code comes from official sources.
 
 This project is a collaboration between:
