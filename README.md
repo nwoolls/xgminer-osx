@@ -18,7 +18,7 @@ Our aim is to provide a single source for the best possible OS X binaries for cg
 Homebrew
 --------
 
-If you are a [Homebrew][10] user and are interested in using Homebrew to install cgminer and/or bfgminer, [this repository][9] contains formulas and instructions that making this a simple process.
+If you are a [Homebrew][10] user and are interested in using Homebrew to install cgminer and/or bfgminer, the [homebrew-xgminer][9] repository contains formulas and instructions that make this a simple process.
 
 [1]: http://www.nwoolls.com/
 [2]: http://multiminerapp.com
