@@ -5,7 +5,7 @@ This project consists of a standard set of shell scripts for creating redistribu
 
 ![bfgminer](http://nwoolls.files.wordpress.com/2013/07/screen-shot-2013-07-01-at-5-47-22-pm.png "bfgminer")
 
-The [Releases tab][8] is used to provide binary downloads for these redistributable packages. All source code comes from official sources.
+The [Releases][8] page is used to provide binary downloads for these redistributable packages. All source code comes from official sources.
 
 This project is a collaboration between:
 
@@ -21,7 +21,7 @@ Homebrew
 If you are a [Homebrew][10] user and are interested in using Homebrew to install cgminer and/or bfgminer, [this repository][9] contains formulas and instructions that making this a simple process.
 
 [1]: http://www.nwoolls.com/
-[2]: https://github.com/nwoolls/MultiMiner
+[2]: http://multiminerapp.com
 [3]: http://www.spaceman.ca/blog/
 [4]: http://www.asteroidapp.com/
 [5]: http://fabulouspanda.co.uk/macminer/
