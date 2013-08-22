@@ -26,5 +26,5 @@ If you are a [Homebrew][10] user and are interested in using Homebrew to install
 [6]: https://github.com/ckolivas/cgminer
 [7]: https://github.com/luke-jr/bfgminer
 [8]: https://github.com/nwoolls/xgminer-osx/releases
-[9]: https://github.com/nwoolls/homebrew-cryptocoin
+[9]: http://homebrew.xgminer.com
 [10]: http://brew.sh/
