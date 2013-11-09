@@ -2,7 +2,8 @@
 
 rm -rf ./output
 
-. ./build_all_libraries.sh
+. ./build_libcurl.sh
+
 . ./build_cgminer.sh
 
 . ./EDITME_versions.sh
