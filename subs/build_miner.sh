@@ -22,6 +22,8 @@ mkdir output
 
 cd working
 
+autoreconf -i
+
 ./configure --prefix=$BUILD_DIR/output CFLAGS="-I$BUILD_DIR/output/include" LDFLAGS="-L$BUILD_DIR/output/lib" CPPFLAGS="-I$BUILD_DIR/output/include" LIBCURL_CFLAGS="-I$BUILD_DIR/output/include/curl" LIBCURL_LIBS="-L$BUILD_DIR/output/lib -lcurl" LIBUSB_CFLAGS="-I$BUILD_DIR/output/include/libusb-1.0" LIBUSB_LIBS="-L$BUILD_DIR/output/lib -lusb-1.0" --enable-scrypt --enable-bflsc --enable-bitforce --enable-icarus --enable-modminer --enable-ztex --enable-avalon --disable-adl --enable-opencl --enable-bitfury --enable-hashfast --enable-klondike
 make
 make install
