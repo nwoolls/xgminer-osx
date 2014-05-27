@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LIB_URL=https://github.com/troydhanson/uthash/archive/master.zip
+LIB_URL=https://github.com/troydhanson/uthash/archive/v$LIBUTHASH_VRESION.zip
 LIB_FILE=uthash.zip
 
 # keep this at the top in case we cd around
