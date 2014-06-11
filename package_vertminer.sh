@@ -2,8 +2,9 @@
 
 rm -rf ./output
 
-. ./build_all_libraries.sh
-. ./build_vertminer.sh
+./build_libcurl.sh
+
+./build_vertminer.sh
 
 . ./EDITME_versions.sh
 

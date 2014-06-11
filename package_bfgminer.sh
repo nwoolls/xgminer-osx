@@ -2,8 +2,14 @@
 
 rm -rf ./output
 
-. ./build_all_libraries.sh
-. ./build_bfgminer.sh
+./build_libcurl.sh
+./build_libjansson.sh
+./build_libusb.sh
+./build_uthash.sh
+./build_libmicrohttpd.sh
+./build_libevent.sh
+
+./build_bfgminer.sh
 
 . ./EDITME_versions.sh
 
