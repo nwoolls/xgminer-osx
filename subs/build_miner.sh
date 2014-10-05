@@ -38,7 +38,9 @@ install_name_tool \
     -change     $BUILD_DIR/output/lib/libusb-1.0.0.dylib                @executable_path/../lib/libusb-1.0.0.dylib \
     -change     $BUILD_DIR/output/lib/libusb-1.0.2.dylib                @executable_path/../lib/libusb-1.0.2.dylib \
     -change     $BUILD_DIR/output/lib/libbase58.0.dylib                 @executable_path/../lib/libbase58.0.dylib \
+    -change     $BUILD_DIR/output/lib/libblkmaker_jansson-0.1.0.dylib   @executable_path/../lib/libblkmaker_jansson-0.1.0.dylib \
     -change     $BUILD_DIR/output/lib/libblkmaker_jansson-0.1.6.dylib   @executable_path/../lib/libblkmaker_jansson-0.1.6.dylib \
+    -change     $BUILD_DIR/output/lib/libblkmaker-0.1.0.dylib           @executable_path/../lib/libblkmaker-0.1.0.dylib \
     -change     $BUILD_DIR/output/lib/libblkmaker-0.1.6.dylib           @executable_path/../lib/libblkmaker-0.1.6.dylib \
     -change     $BUILD_DIR/output/lib/libmicrohttpd.10.dylib            @executable_path/../lib/libmicrohttpd.10.dylib \
     -change     $BUILD_DIR/output/lib/libevent-2.0.5.dylib              @executable_path/../lib/libevent-2.0.5.dylib \
@@ -53,3 +55,9 @@ install_name_tool \
 install_name_tool \
     -change     $BUILD_DIR/output/lib/libbase58.0.dylib                 @executable_path/../lib/libbase58.0.dylib \
     output/lib/libblkmaker-0.1.6.dylib
+
+# for older builds of BFGMiner
+install_name_tool \
+    -change     $BUILD_DIR/output/lib/libblkmaker-0.1.0.dylib           @executable_path/../lib/libblkmaker-0.1.0.dylib \
+    -change     $BUILD_DIR/output/lib/libjansson.4.dylib                @executable_path/../lib/libjansson.4.dylib \
+    output/lib/libblkmaker_jansson-0.1.0.dylib
