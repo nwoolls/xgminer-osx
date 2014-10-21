@@ -22,7 +22,7 @@ mkdir output
 
 cd working
 
-./configure --prefix=$BUILD_DIR/output
+./configure --prefix=$BUILD_DIR/output --with-gnutls=no
 make
 make install
 
