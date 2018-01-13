@@ -22,7 +22,7 @@ mkdir output
 
 cd working
 
-./configure --prefix=$BUILD_DIR/output --with-gnutls=no
+./configure LDFLAGS='-L/usr/local/opt/openssl/lib' CPPFLAGS='-I/usr/local/opt/openssl/include' --prefix=$BUILD_DIR/output --with-gnutls=no
 make
 make install
 

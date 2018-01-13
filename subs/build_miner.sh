@@ -1,5 +1,42 @@
 #!/bin/bash
 
+function patch_undefined_TIMER_ABSTIME() {
+    local find_pattern="ifdef CLOCK_MONOTONIC"
+    local replace_value="if defined(CLOCK_MONOTONIC) \&\& !defined(__APPLE__)"
+
+    find . -path '*.c' -not -path '*/\.*' -type f -exec \
+        gsed -i -r 's/'"$find_pattern"'/'"$replace_value"'/g' {} \;
+}
+
+function patch_undefined_inline() {
+    local find_pattern="^inline "
+    local replace_value="static inline "
+
+    find . -path '*.c' -not -path '*/\.*' -type f -exec \
+        gsed -i -r 's/'"$find_pattern"'/'"$replace_value"'/g' {} \;
+}
+
+function init_update_external_modules() {
+    set -v
+
+    git config -f .gitmodules --get-regexp '^submodule\..*\.path$' |
+    while read path_key path
+    do
+        local url_key=$(echo $path_key | sed 's/\.path/.url/')
+        local url=$(git config -f .gitmodules --get "$url_key")
+
+        set +e
+        git submodule deinit --force "$path"
+        git rm --force "$path"
+        set -e
+
+        rm -rf "$BUILD_DIR/.git/modules/working/$path"
+        rm -rf ./"$path"
+
+        git submodule add $url ./"$path"
+    done
+}
+
 CACHE_FILENAME=$MINER_EXE-$MINER_VERSION-$(basename $MINER_URL)
 CACHE_ROOT=./cache
 CACHE_FILEPATH=$CACHE_ROOT/$CACHE_FILENAME
@@ -22,8 +59,11 @@ mkdir output
 
 cd working
 
-git submodule init
-git submodule update
+patch_undefined_TIMER_ABSTIME
+
+patch_undefined_inline
+
+init_update_external_modules
 
 autoreconf -i
 
