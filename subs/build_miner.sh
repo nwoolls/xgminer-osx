@@ -33,7 +33,7 @@ function init_update_external_modules() {
         rm -rf "$BUILD_DIR/.git/modules/working/$path"
         rm -rf ./"$path"
 
-        git submodule add $url ./"$path"
+        git submodule add --force $url ./"$path"
     done
 }
 
