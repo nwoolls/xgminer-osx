@@ -9,16 +9,16 @@ BUILD_DIR=$(pwd)
 
 if [ ! -f $CACHE_FILEPATH ]
 then
-    mkdir $CACHE_ROOT
+    mkdir -p $CACHE_ROOT
     curl -L $LIB_URL -o $CACHE_FILEPATH
 fi
 
 rm -rf working
-mkdir working
+mkdir -p working
 
 tar -xzvf $CACHE_FILEPATH -C working --strip-components=1
 
-mkdir output
+mkdir -p output
 
 cd working
 

@@ -46,16 +46,16 @@ BUILD_DIR=$(pwd)
 
 if [ ! -f $CACHE_FILEPATH ]
 then
-    mkdir $CACHE_ROOT
+    mkdir -p $CACHE_ROOT
     wget -O $CACHE_FILEPATH $MINER_URL
 fi
 
 rm -rf working
-mkdir working
+mkdir -p working
 
 tar -xzvf $CACHE_FILEPATH -C working --strip-components=1
 
-mkdir output
+mkdir -p output
 
 cd working
 
@@ -75,34 +75,47 @@ cd $BUILD_DIR
 
 rm -rf working
 
-install_name_tool \
-    -change     $BUILD_DIR/output/lib/libcurl.4.dylib                   @executable_path/../lib/libcurl.4.dylib \
-    -change     $BUILD_DIR/output/lib/libjansson.4.dylib                @executable_path/../lib/libjansson.4.dylib \
-    -change     $BUILD_DIR/output/lib/libusb-1.0.0.dylib                @executable_path/../lib/libusb-1.0.0.dylib \
-    -change     $BUILD_DIR/output/lib/libusb-1.0.2.dylib                @executable_path/../lib/libusb-1.0.2.dylib \
-    -change     $BUILD_DIR/output/lib/libbase58.0.dylib                 @executable_path/../lib/libbase58.0.dylib \
-    -change     /usr/local/lib/libbase58.0.dylib                        @executable_path/../lib/libbase58.0.dylib \
-    -change     $BUILD_DIR/output/lib/libblkmaker_jansson-0.1.0.dylib   @executable_path/../lib/libblkmaker_jansson-0.1.0.dylib \
-    -change     $BUILD_DIR/output/lib/libblkmaker_jansson-0.1.6.dylib   @executable_path/../lib/libblkmaker_jansson-0.1.6.dylib \
-    -change     $BUILD_DIR/output/lib/libblkmaker-0.1.0.dylib           @executable_path/../lib/libblkmaker-0.1.0.dylib \
-    -change     $BUILD_DIR/output/lib/libblkmaker-0.1.6.dylib           @executable_path/../lib/libblkmaker-0.1.6.dylib \
-    -change     $BUILD_DIR/output/lib/libmicrohttpd.10.dylib            @executable_path/../lib/libmicrohttpd.10.dylib \
-    -change     $BUILD_DIR/output/lib/libevent-2.0.5.dylib              @executable_path/../lib/libevent-2.0.5.dylib \
-    output/bin/$MINER_EXE
+if [ -f output/bin/$MINER_EXE ]
+then
+    install_name_tool \
+        -change     $BUILD_DIR/output/lib/libcurl.4.dylib                   @executable_path/../lib/libcurl.4.dylib \
+        -change     $BUILD_DIR/output/lib/libjansson.4.dylib                @executable_path/../lib/libjansson.4.dylib \
+        -change     $BUILD_DIR/output/lib/libusb-1.0.0.dylib                @executable_path/../lib/libusb-1.0.0.dylib \
+        -change     $BUILD_DIR/output/lib/libusb-1.0.2.dylib                @executable_path/../lib/libusb-1.0.2.dylib \
+        -change     $BUILD_DIR/output/lib/libbase58.0.dylib                 @executable_path/../lib/libbase58.0.dylib \
+        -change     /usr/local/lib/libbase58.0.dylib                        @executable_path/../lib/libbase58.0.dylib \
+        -change     $BUILD_DIR/output/lib/libblkmaker_jansson-0.1.dylib     @executable_path/../lib/libblkmaker_jansson-0.1.dylib \
+        -change     $BUILD_DIR/output/lib/libblkmaker_jansson-0.1.6.dylib   @executable_path/../lib/libblkmaker_jansson-0.1.6.dylib \
+        -change     $BUILD_DIR/output/lib/libblkmaker-0.1.dylib             @executable_path/../lib/libblkmaker-0.1.dylib \
+        -change     $BUILD_DIR/output/lib/libblkmaker-0.1.6.dylib           @executable_path/../lib/libblkmaker-0.1.6.dylib \
+        -change     $BUILD_DIR/output/lib/libmicrohttpd.10.dylib            @executable_path/../lib/libmicrohttpd.10.dylib \
+        -change     $BUILD_DIR/output/lib/libevent-2.0.5.dylib              @executable_path/../lib/libevent-2.0.5.dylib \
+        output/bin/$MINER_EXE
+fi
 
-install_name_tool \
-    -change     $BUILD_DIR/output/lib/libblkmaker-0.1.6.dylib           @executable_path/../lib/libblkmaker-0.1.6.dylib \
-    -change     $BUILD_DIR/output/lib/libjansson.4.dylib                @executable_path/../lib/libjansson.4.dylib \
-    -change     $BUILD_DIR/output/lib/libbase58.0.dylib                 @executable_path/../lib/libbase58.0.dylib \
-    output/lib/libblkmaker_jansson-0.1.6.dylib
+if [ -f output/lib/libblkmaker_jansson-0.1.6.dylib ]
+then
+    install_name_tool \
+        -change     $BUILD_DIR/output/lib/libblkmaker-0.1.6.dylib           @executable_path/../lib/libblkmaker-0.1.6.dylib \
+        -change     $BUILD_DIR/output/lib/libjansson.4.dylib                @executable_path/../lib/libjansson.4.dylib \
+        -change     $BUILD_DIR/output/lib/libbase58.0.dylib                 @executable_path/../lib/libbase58.0.dylib \
+        output/lib/libblkmaker_jansson-0.1.6.dylib
+fi
 
-install_name_tool \
-    -change     $BUILD_DIR/output/lib/libbase58.0.dylib                 @executable_path/../lib/libbase58.0.dylib \
-    -change     /usr/local/lib/libbase58.0.dylib                        @executable_path/../lib/libbase58.0.dylib \
-    output/lib/libblkmaker-0.1.6.dylib
+if [ -f output/lib/libblkmaker-0.1.6.dylib ]
+then
+    install_name_tool \
+        -change     $BUILD_DIR/output/lib/libbase58.0.dylib                 @executable_path/../lib/libbase58.0.dylib \
+        -change     /usr/local/lib/libbase58.0.dylib                        @executable_path/../lib/libbase58.0.dylib \
+        output/lib/libblkmaker-0.1.6.dylib
+fi
 
 # for older builds of BFGMiner
-install_name_tool \
-    -change     $BUILD_DIR/output/lib/libblkmaker-0.1.0.dylib           @executable_path/../lib/libblkmaker-0.1.0.dylib \
-    -change     $BUILD_DIR/output/lib/libjansson.4.dylib                @executable_path/../lib/libjansson.4.dylib \
-    output/lib/libblkmaker_jansson-0.1.0.dylib
+
+if [ -f output/lib/libblkmaker_jansson-0.1.dylib ]
+then
+    install_name_tool \
+        -change     $BUILD_DIR/output/lib/libblkmaker-0.1.dylib             @executable_path/../lib/libblkmaker-0.1.dylib \
+        -change     $BUILD_DIR/output/lib/libjansson.4.dylib                @executable_path/../lib/libjansson.4.dylib \
+        output/lib/libblkmaker_jansson-0.1.dylib
+fi

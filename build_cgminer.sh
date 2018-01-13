@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 . ./EDITME_versions.sh
 
 MINER_URL=http://ck.kolivas.org/apps/cgminer/cgminer-$CGMINER_VERSION.tar.bz2

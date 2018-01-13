@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 . ./EDITME_versions.sh
 
 MINER_URL=http://luke.dashjr.org/programs/bitcoin/files/bfgminer/$BFGMINER_VERSION/bfgminer-$BFGMINER_VERSION.zip

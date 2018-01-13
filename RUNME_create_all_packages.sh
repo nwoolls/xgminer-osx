@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 ./package_cgminer.sh
 ./package_bfgminer.sh
 ./package_sgminer.sh
