@@ -15,6 +15,21 @@ This project is a collaboration between:
 
 Our aim is to provide a single source for the best possible OS X binaries for cgminer and bfgminer until such time as the authors provide OS X redistributables themselves.
 
+### Prerequisites
+
+#### General
+
+* automake
+* autoconf
+* libtool
+* GNU sed
+
+#### BFGMiner
+
+* openssl
+
+Install with Homebrew - e.g. `brew install automake autoconf libtool sed`
+
 Homebrew
 --------
 
