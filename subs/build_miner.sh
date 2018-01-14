@@ -17,8 +17,6 @@ function patch_undefined_inline() {
 }
 
 function init_update_external_modules() {
-    set -v
-
     git config -f .gitmodules --get-regexp '^submodule\..*\.path$' |
     while read path_key path
     do
@@ -75,47 +73,21 @@ cd $BUILD_DIR
 
 rm -rf working
 
-if [ -f output/bin/$MINER_EXE ]
-then
-    install_name_tool \
-        -change     $BUILD_DIR/output/lib/libcurl.4.dylib                   @executable_path/../lib/libcurl.4.dylib \
-        -change     $BUILD_DIR/output/lib/libjansson.4.dylib                @executable_path/../lib/libjansson.4.dylib \
-        -change     $BUILD_DIR/output/lib/libusb-1.0.0.dylib                @executable_path/../lib/libusb-1.0.0.dylib \
-        -change     $BUILD_DIR/output/lib/libusb-1.0.2.dylib                @executable_path/../lib/libusb-1.0.2.dylib \
-        -change     $BUILD_DIR/output/lib/libbase58.0.dylib                 @executable_path/../lib/libbase58.0.dylib \
-        -change     /usr/local/lib/libbase58.0.dylib                        @executable_path/../lib/libbase58.0.dylib \
-        -change     $BUILD_DIR/output/lib/libblkmaker_jansson-0.1.dylib     @executable_path/../lib/libblkmaker_jansson-0.1.dylib \
-        -change     $BUILD_DIR/output/lib/libblkmaker_jansson-0.1.6.dylib   @executable_path/../lib/libblkmaker_jansson-0.1.6.dylib \
-        -change     $BUILD_DIR/output/lib/libblkmaker-0.1.dylib             @executable_path/../lib/libblkmaker-0.1.dylib \
-        -change     $BUILD_DIR/output/lib/libblkmaker-0.1.6.dylib           @executable_path/../lib/libblkmaker-0.1.6.dylib \
-        -change     $BUILD_DIR/output/lib/libmicrohttpd.10.dylib            @executable_path/../lib/libmicrohttpd.10.dylib \
-        -change     $BUILD_DIR/output/lib/libevent-2.0.5.dylib              @executable_path/../lib/libevent-2.0.5.dylib \
-        output/bin/$MINER_EXE
-fi
+function relink_bins() {
+    local bin_path=$1
+    for file_path in $bin_path ; do
+        local otool_output=$(otool -LX $file_path | grep $BUILD_DIR/output/)
+        if [[ -n "$otool_output" && "$otool_output" != *"not an object file"* ]]; then
+            while read -r lib_line; do
+                local lib_path=$(echo $lib_line | cut -f 1 -d " ")
+                local lib_name=$(basename "$lib_path")
+                install_name_tool \
+                    -change "$lib_path" "@executable_path/../lib/$lib_name" \
+                    "$file_path"
+            done <<< "$otool_output"
+        fi
+    done
+}
 
-if [ -f output/lib/libblkmaker_jansson-0.1.6.dylib ]
-then
-    install_name_tool \
-        -change     $BUILD_DIR/output/lib/libblkmaker-0.1.6.dylib           @executable_path/../lib/libblkmaker-0.1.6.dylib \
-        -change     $BUILD_DIR/output/lib/libjansson.4.dylib                @executable_path/../lib/libjansson.4.dylib \
-        -change     $BUILD_DIR/output/lib/libbase58.0.dylib                 @executable_path/../lib/libbase58.0.dylib \
-        output/lib/libblkmaker_jansson-0.1.6.dylib
-fi
-
-if [ -f output/lib/libblkmaker-0.1.6.dylib ]
-then
-    install_name_tool \
-        -change     $BUILD_DIR/output/lib/libbase58.0.dylib                 @executable_path/../lib/libbase58.0.dylib \
-        -change     /usr/local/lib/libbase58.0.dylib                        @executable_path/../lib/libbase58.0.dylib \
-        output/lib/libblkmaker-0.1.6.dylib
-fi
-
-# for older builds of BFGMiner
-
-if [ -f output/lib/libblkmaker_jansson-0.1.dylib ]
-then
-    install_name_tool \
-        -change     $BUILD_DIR/output/lib/libblkmaker-0.1.dylib             @executable_path/../lib/libblkmaker-0.1.dylib \
-        -change     $BUILD_DIR/output/lib/libjansson.4.dylib                @executable_path/../lib/libjansson.4.dylib \
-        output/lib/libblkmaker_jansson-0.1.dylib
-fi
+relink_bins "$BUILD_DIR"/output/lib/\*.dylib
+relink_bins "$BUILD_DIR"/output/bin/\*
