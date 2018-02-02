@@ -6,6 +6,7 @@ set -e
 ./package_bfgminer.sh
 ./package_sgminer.sh
 ./package_sphsgminer.sh
+./package_sgminer-nh.sh
 ./package_sgminer-gm.sh
 ./package_sgminer-pascal.sh
 ./package_vertminer.sh
