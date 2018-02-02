@@ -9,20 +9,20 @@ BUILD_DIR=$(pwd)
 
 if [ ! -f $CACHE_FILEPATH ]
 then
-    mkdir $CACHE_ROOT
-    wget -O $CACHE_FILEPATH $LIB_URL
+    mkdir -p $CACHE_ROOT
+    curl -L $LIB_URL -o $CACHE_FILEPATH
 fi
 
 rm -rf working
-mkdir working
+mkdir -p working
 
 tar -xzvf $CACHE_FILEPATH -C working --strip-components=1
 
-mkdir output
+mkdir -p output
 
 cd working
 
-./configure --prefix=$BUILD_DIR/output
+./configure LDFLAGS='-L/usr/local/opt/openssl/lib' CPPFLAGS='-I/usr/local/opt/openssl/include' --prefix=$BUILD_DIR/output --with-gnutls=no
 make
 make install
 

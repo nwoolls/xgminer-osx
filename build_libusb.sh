@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 . ./EDITME_versions.sh
 
 LIB_URL=http://downloads.sourceforge.net/libusb/libusb-$LIBUSB_VERSION.tar.bz2
