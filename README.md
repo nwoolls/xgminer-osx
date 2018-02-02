@@ -23,14 +23,15 @@ Our aim is to provide a single source for the best possible OS X binaries for cg
 * autoconf
 * libtool
 * GNU sed
-* libevent
+* git
+* wget
 
 
 #### BFGMiner
 
 * openssl
 
-Install with Homebrew - e.g. `brew install automake autoconf libtool gnu-sed libevent`
+Install with Homebrew - e.g. `brew install automake autoconf libtool gnu-sed git wget`
 
 
 Homebrew
