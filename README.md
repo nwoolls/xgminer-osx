@@ -32,7 +32,6 @@ Our aim is to provide a single source for the best possible OS X binaries for cg
 
 Install with Homebrew - e.g. `brew install automake autoconf libtool gnu-sed git wget`
 
-
 Homebrew
 --------
 
