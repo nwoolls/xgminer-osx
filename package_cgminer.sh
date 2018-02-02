@@ -16,3 +16,4 @@ mkdir -p ./redist
 mv cgminer-$CGMINER_VERSION-osx64.tar.gz redist/
 
 rm -rf ./output
+

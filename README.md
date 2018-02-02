@@ -26,7 +26,6 @@ Our aim is to provide a single source for the best possible OS X binaries for cg
 * git
 * wget
 
-
 #### BFGMiner
 
 * openssl
