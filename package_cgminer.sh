@@ -5,6 +5,7 @@ set -e
 rm -rf ./output
 
 ./build_libcurl.sh
+./build_libusb.sh
 
 ./build_cgminer.sh
 
