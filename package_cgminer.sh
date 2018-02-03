@@ -7,6 +7,7 @@ rm -rf ./output
 ./build_libcurl.sh
 
 ./build_cgminer.sh
+./build_libusb.sh
 
 . ./EDITME_versions.sh
 

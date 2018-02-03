@@ -10,7 +10,7 @@ The [Releases][8] page is used to provide binary downloads for these redistribut
 This project is a collaboration between:
 
 * John - author of [MacMiner][5]
-* [Kerry][3] - author of [Asteroid][4]
+* [Kerry][3] - author of Asteroid
 * [Nate Woolls][1] - author of [MultiMiner][2]
 
 Our aim is to provide a single source for the best possible OS X binaries for cgminer and bfgminer until such time as the authors provide OS X redistributables themselves.
@@ -23,12 +23,14 @@ Our aim is to provide a single source for the best possible OS X binaries for cg
 * autoconf
 * libtool
 * GNU sed
+* git
+* wget
 
 #### BFGMiner
 
 * openssl
 
-Install with Homebrew - e.g. `brew install automake autoconf libtool sed`
+Install with Homebrew - e.g. `brew install automake autoconf libtool gnu-sed git wget`
 
 Homebrew
 --------
@@ -38,8 +40,7 @@ If you are a [Homebrew][10] user and are interested in using Homebrew to install
 [1]: http://www.nwoolls.com/
 [2]: http://multiminerapp.com
 [3]: http://www.spaceman.ca/blog/
-[4]: http://www.asteroidapp.com/
-[5]: http://fabulouspanda.co.uk/macminer/
+[5]: http://macminer.fabulouspanda.com/
 [6]: https://github.com/ckolivas/cgminer
 [7]: https://github.com/luke-jr/bfgminer
 [8]: https://github.com/nwoolls/xgminer-osx/releases
