@@ -66,7 +66,7 @@ init_update_external_modules
 autoreconf -i
 
 ./configure \
-    --prefix=$BUILD_DIR/output \
+    --prefix="$BUILD_DIR/output" \
     CFLAGS="-I$BUILD_DIR/output/include -I$BUILD_DIR/output/include/libusb-1.0" \
     LDFLAGS="-L$BUILD_DIR/output/lib" \
     CPPFLAGS="-I$BUILD_DIR/output/include" \
